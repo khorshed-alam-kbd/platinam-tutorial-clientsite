@@ -1,9 +1,23 @@
-import React from 'react';
+import { GoogleAuthProvider } from 'firebase/auth';
+import React, { useContext } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../context/AuthProvider/AuthProvider';
 
 const Login = () => {
+    const { providerLogin } = useContext(AuthContext);
+    const googleProvider = new GoogleAuthProvider();
+    const handleGoogleSingIn = () => {
+        providerLogin(googleProvider)
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+            })
+            .catch(error => console.error(error))
+
+    }
+
     return (
         <div className='container shadow mt-5 p-5 pb-2 border rounded'>
             <h2 className='fw-semibold text-dark text-center' >Hi, Welcome back!</h2>
@@ -27,7 +41,7 @@ const Login = () => {
             </Form>
             <p className='text-center'>or</p>
 
-            <Button variant="success" type="submit" className='fw-semibold text-white text-decoration-none  w-50 mb-3 g-3'> Google </Button>
+            <Button onClick={handleGoogleSingIn} variant="success" type="submit" className='fw-semibold text-white text-decoration-none  w-50 mb-3 g-3'> Google </Button>
             <Button variant="secondary" type="submit" className='fw-semibold text-white text-decoration-none w-50 mb-3'> GitHub </Button>
         </div>
     );
