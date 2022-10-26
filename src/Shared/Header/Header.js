@@ -65,19 +65,22 @@ const Header = () => {
                     </Nav>
 
                     <Nav>
+                        <Nav className='text-light border rounded p-2 me-2 '>
+                            {dark ?
+                                <FaSun onClick={LightTheme}></FaSun>
+                                : <FaMoon onClick={darkTheme}></FaMoon>
+                            }
+                        </Nav>
 
                         {user?.uid ?
                             <Button onClick={handleSignOut} variant="warning" ><Link to='/login' className='fw-semibold text-dark text-decoration-none'>Logout</Link></Button>
                             :
                             <Button variant="warning" ><Link to='/login' className='fw-semibold text-dark text-decoration-none'>Login</Link></Button>
                         }
+
+
                     </Nav>
-                    <Nav className='text-light border rounded ms-2 p-1 '>
-                        {dark ?
-                            <FaSun onClick={LightTheme}></FaSun>
-                            : <FaMoon onClick={darkTheme}></FaMoon>
-                        }
-                    </Nav>
+
 
                 </Navbar.Collapse>
 
