@@ -31,19 +31,19 @@ const Header = () => {
                         </NavDropdown>
                     </Nav>
                     <Nav>
+                        <Nav.Link href="#deets">Name</Nav.Link>
+                        <Nav.Link eventKey={2} href="#memes">photo</Nav.Link>
+                    </Nav>
+                    <Nav>
                         <ButtonGroup className='' aria-label="Basic example">
-                            <Button variant="warning" ><Link to='/login'>Log In</Link></Button>
-                            <Button variant="warning" ><Link to='/register'>Register</Link></Button>
-                            {/* <Button variant="warning">Register</Button> */}
+                            <Button variant="warning" ><Link to='/login' className='fw-semibold text-dark text-decoration-none'>Login</Link></Button>|
+                            <Button variant="warning" ><Link to='/register' className='fw-semibold text-dark text-decoration-none'>Register</Link></Button>
                         </ButtonGroup>
-
-                        {/* <Nav.Link href="#deets">More deets</Nav.Link>
-                        <Nav.Link eventKey={2} href="#memes">
-                            Dank memes
-                        </Nav.Link> */}
                     </Nav>
                 </Navbar.Collapse>
+
             </Container>
+
         </Navbar>
 
     );

@@ -4,9 +4,7 @@ import ButtonGroup from 'react-bootstrap/ButtonGroup';
 
 const RightSideNav = () => {
     return (
-        <div>
-
-
+        <div className='container mt-5'>
 
             <ButtonGroup className='mt-3' aria-label="Basic example">
                 <Button variant="secondary">Log In</Button>
