@@ -4,18 +4,38 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import Button from 'react-bootstrap/Button';
-import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import { Link } from 'react-router-dom';
 import { useContext } from 'react';
 import { AuthContext } from '../../context/AuthProvider/AuthProvider';
+import { Image } from 'react-bootstrap';
+import { FaBookReader, FaLightbulb, FaMoon, FaRegLightbulb, FaRegUserCircle, FaSun } from 'react-icons/fa';
+import { useState } from 'react';
 
 
 const Header = () => {
-    const { user } = useContext(AuthContext);
+    const { user, logOut } = useContext(AuthContext);
+
+    const [dark, setDark] = useState(false)
+
+    const darkTheme = () => {
+        setDark(true);
+    }
+    const LightTheme = () => {
+        setDark(false);
+    }
+
+    const handleSignOut = () => {
+        logOut().then(() => {
+
+        }).catch((error) => {
+
+        });
+    }
+
     return (
         <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
             <Container>
-                <Navbar.Brand href="#home">Platinam Tutorial</Navbar.Brand>
+                <Navbar.Brand ><FaBookReader />Platinam Tutorial</Navbar.Brand>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className="me-auto">
@@ -34,20 +54,36 @@ const Header = () => {
                         </NavDropdown>
                     </Nav>
                     <Nav>
-                        <Nav.Link href="#deets">{user?.displayName}</Nav.Link>
-                        <Nav.Link eventKey={2} href="#memes">photo</Nav.Link>
+                        <Nav.Link > {user?.displayName} </Nav.Link>
+                        <Nav.Link >
+                            {user?.photoURL ?
+                                <Image style={{ height: '30px' }} roundedCircle src={user.photoURL} ></Image>
+                                : <FaRegUserCircle></FaRegUserCircle>
+                            }
+                        </Nav.Link>
+
                     </Nav>
+
                     <Nav>
-                        <ButtonGroup className='' aria-label="Basic example">
-                            <Button variant="warning" ><Link to='/login' className='fw-semibold text-dark text-decoration-none'>Login</Link></Button>|
-                            <Button variant="warning" ><Link to='/register' className='fw-semibold text-dark text-decoration-none'>Register</Link></Button>
-                        </ButtonGroup>
+
+                        {user?.uid ?
+                            <Button onClick={handleSignOut} variant="warning" ><Link to='/login' className='fw-semibold text-dark text-decoration-none'>Logout</Link></Button>
+                            :
+                            <Button variant="warning" ><Link to='/login' className='fw-semibold text-dark text-decoration-none'>Login</Link></Button>
+                        }
                     </Nav>
+                    <Nav className='text-light border rounded ms-2 p-1 '>
+                        {dark ?
+                            <FaSun onClick={LightTheme}></FaSun>
+                            : <FaMoon onClick={darkTheme}></FaMoon>
+                        }
+                    </Nav>
+
                 </Navbar.Collapse>
 
             </Container>
 
-        </Navbar>
+        </Navbar >
 
     );
 };
