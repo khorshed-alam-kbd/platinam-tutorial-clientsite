@@ -35,12 +35,12 @@ const Header = () => {
     return (
         <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
             <Container>
-                <Navbar.Brand ><FaBookReader />Platinam Tutorial</Navbar.Brand>
+                <Navbar.Brand ><FaBookReader />  Platinam Tutorial</Navbar.Brand>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className="me-auto">
-                        <Nav.Link href="#features">Courses</Nav.Link>
-                        <Nav.Link href="#pricing">Blog</Nav.Link>
+                        <Nav.Link> <Link to='/' className='text-white text-decoration-none'>Courses</Link></Nav.Link>
+                        <Nav.Link> <Link to='/blog' className='text-white text-decoration-none'>Blog</Link></Nav.Link>
                         <NavDropdown title="Dropdown" id="collasible-nav-dropdown">
                             <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
                             <NavDropdown.Item href="#action/3.2">
@@ -65,7 +65,7 @@ const Header = () => {
                     </Nav>
 
                     <Nav>
-                        <Nav className='text-light border rounded p-2 me-2 '>
+                        <Nav className='text-light p-2 me-2 '>
                             {dark ?
                                 <FaSun onClick={LightTheme}></FaSun>
                                 : <FaMoon onClick={darkTheme}></FaMoon>
@@ -78,9 +78,7 @@ const Header = () => {
                             <Button variant="warning" ><Link to='/login' className='fw-semibold text-dark text-decoration-none'>Login</Link></Button>
                         }
 
-
                     </Nav>
-
 
                 </Navbar.Collapse>
 
