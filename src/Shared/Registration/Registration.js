@@ -1,3 +1,4 @@
+import { updateProfile } from 'firebase/auth';
 import React from 'react';
 import { useState } from 'react';
 import { useContext } from 'react';
@@ -7,7 +8,7 @@ import { Link } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthProvider/AuthProvider';
 
 const Registration = () => {
-    const { user, createUser } = useContext(AuthContext);
+    const { createUser, auth, updateUserProfile } = useContext(AuthContext);
 
     const [error, setError] = useState(null);
 
@@ -31,8 +32,32 @@ const Registration = () => {
                 console.log(user)
                 form.reset();
             })
-            .catch(error => console.error(error))
+            .catch(error => console.error(error));
+
+        // updateProfile(auth.currentUser, profile)
+        //     .then(() => {
+        //         // Profile updated!
+        //         // ...
+        //     }).catch((error) => {
+        //         // An error occurred
+        //         // ...
+        //     });
+        handleUpdateUserProfile(name, photoUrl)
     }
+    const handleUpdateUserProfile = (name, photoUrl) => {
+        const profile = {
+            displayName: name,
+            photoURL: photoUrl
+        }
+        updateUserProfile(profile)
+            .then((result) => {
+                const user = result.user
+                console.log(user)
+            })
+            .catch(error => console.error(error));
+
+    }
+
 
 
 
@@ -46,7 +71,7 @@ const Registration = () => {
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Label>Photo URL</Form.Label>
-                    <Form.Control type="photoUrl" name='photoUrl' placeholder="Enter Photo URL" />
+                    <Form.Control type="text" name='photoUrl' placeholder="Enter Photo URL" />
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Label>Email </Form.Label>
