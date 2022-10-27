@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 import { useContext } from 'react';
 import { AuthContext } from '../../context/AuthProvider/AuthProvider';
 import { Image } from 'react-bootstrap';
-import { FaBookReader, FaLightbulb, FaMoon, FaRegLightbulb, FaRegUserCircle, FaSun } from 'react-icons/fa';
+import { FaBookReader, FaMoon, FaRegUserCircle, FaSun } from 'react-icons/fa';
 import { useState } from 'react';
 
 

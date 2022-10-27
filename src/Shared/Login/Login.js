@@ -4,12 +4,17 @@ import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { FaGithub, FaGoogle } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthProvider/AuthProvider';
 
 const Login = () => {
     const { providerLogin, logIn } = useContext(AuthContext);
     const [error, setError] = useState(null);
+    const navigate = useNavigate();
+    const location = useLocation();
+
+    const from = location.state?.from?.pathname || '/'
+
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -22,6 +27,7 @@ const Login = () => {
                 const user = result.user
                 console.log(user)
                 form.reset();
+                navigate(from, { replace: true });
             })
             .catch(error => {
                 console.error(error)
@@ -38,17 +44,19 @@ const Login = () => {
             .then(result => {
                 const user = result.user;
                 console.log(user);
+                navigate(from, { replace: true });
+
             })
             .catch(error => console.error(error))
     }
 
     const gitHubProvider = new GithubAuthProvider();
     const handleGitHubSignIn = () => {
-        console.log("hit")
         providerLogin(gitHubProvider)
             .then(result => {
                 const user = result.user;
                 console.log(user);
+                navigate(from, { replace: true });
             })
             .catch(error => console.error(error))
 
