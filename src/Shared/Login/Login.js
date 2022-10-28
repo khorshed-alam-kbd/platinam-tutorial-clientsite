@@ -5,6 +5,7 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { FaGithub, FaGoogle } from 'react-icons/fa';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
+import swal from 'sweetalert';
 import { AuthContext } from '../../context/AuthProvider/AuthProvider';
 
 const Login = () => {
@@ -14,6 +15,16 @@ const Login = () => {
     const location = useLocation();
 
     const from = location.state?.from?.pathname || '/'
+
+    const loginAlrt = () => {
+        swal({
+            title: "Congratulations",
+            text: `You are successfully Login in platinam tutorial`,
+            icon: "success",
+            button: "Done",
+        });
+
+    }
 
 
     const handleSubmit = (event) => {
@@ -28,6 +39,7 @@ const Login = () => {
                 console.log(user)
                 form.reset();
                 navigate(from, { replace: true });
+                loginAlrt();
             })
             .catch(error => {
                 console.error(error)
@@ -45,7 +57,7 @@ const Login = () => {
                 const user = result.user;
                 console.log(user);
                 navigate(from, { replace: true });
-
+                loginAlrt();
             })
             .catch(error => console.error(error))
     }
@@ -57,6 +69,7 @@ const Login = () => {
                 const user = result.user;
                 console.log(user);
                 navigate(from, { replace: true });
+                loginAlrt();
             })
             .catch(error => console.error(error))
 

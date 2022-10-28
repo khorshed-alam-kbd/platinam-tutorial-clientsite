@@ -5,6 +5,7 @@ import { useContext } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { Link } from 'react-router-dom';
+import swal from 'sweetalert';
 import { AuthContext } from '../../context/AuthProvider/AuthProvider';
 
 const Registration = () => {
@@ -22,7 +23,7 @@ const Registration = () => {
         const password = form.password.value
 
         if (password.length < 6) {
-            setError('password should be 6 characters or more')
+            setError('Error: password should be 6 characters or more')
             return;
         }
 
@@ -31,32 +32,55 @@ const Registration = () => {
                 const user = result.user
                 console.log(user)
                 form.reset();
-            })
-            .catch(error => console.error(error));
+                setError('');
+                swal({
+                    title: "Congratulations",
+                    text: `You are successfully registered in platinam tutorial`,
+                    icon: "success",
+                    button: "Done",
+                });
 
-        // updateProfile(auth.currentUser, profile)
-        //     .then(() => {
-        //         // Profile updated!
-        //         // ...
-        //     }).catch((error) => {
-        //         // An error occurred
-        //         // ...
-        //     });
-        handleUpdateUserProfile(name, photoUrl)
-    }
-    const handleUpdateUserProfile = (name, photoUrl) => {
+            })
+            .catch(error => {
+                console.error(error);
+                setError(error.message);
+                swal({
+                    title: "Opps !!",
+                    text: `${error.message}`,
+                    icon: "error",
+                    button: "Try Again",
+                });
+            });
+
+
         const profile = {
             displayName: name,
             photoURL: photoUrl
         }
-        updateUserProfile(profile)
-            .then((result) => {
-                const user = result.user
-                console.log(user)
-            })
-            .catch(error => console.error(error));
 
+        updateProfile(auth.currentUser, profile)
+            .then(() => {
+                // Profile updated!
+                // ...
+            }).catch((error) => {
+                // An error occurred
+                // ...
+            });
+        // handleUpdateUserProfile(name, photoUrl)
     }
+    // const handleUpdateUserProfile = (name, photoUrl) => {
+    //     const profile = {
+    //         displayName: name,
+    //         photoURL: photoUrl
+    //     }
+    //     updateUserProfile(profile)
+    //         .then((result) => {
+    //             const user = result.user
+    //             console.log(user)
+    //         })
+    //         .catch(error => console.error(error));
+
+    // }
 
 
 
