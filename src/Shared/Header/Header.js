@@ -6,7 +6,7 @@ import Button from 'react-bootstrap/Button';
 import { Link } from 'react-router-dom';
 import { useContext } from 'react';
 import { AuthContext } from '../../context/AuthProvider/AuthProvider';
-import { Image } from 'react-bootstrap';
+import { Image, OverlayTrigger, Tooltip } from 'react-bootstrap';
 import { FaMoon, FaRegUserCircle, FaSun } from 'react-icons/fa';
 import { useState } from 'react';
 
@@ -49,23 +49,34 @@ const Header = () => {
 
                     </Nav>
                     <Nav>
-                        <Nav.Link > {user?.displayName} </Nav.Link>
-                        <Nav.Link >
-                            {user?.photoURL ?
-                                <Image style={{ height: '30px' }} roundedCircle src={user.photoURL} ></Image>
-                                : <FaRegUserCircle></FaRegUserCircle>
-                            }
-                        </Nav.Link>
-
-                    </Nav>
-
-                    <Nav>
                         <Nav className='text-light p-2 me-2 '>
                             {dark ?
                                 <FaSun onClick={LightTheme}></FaSun>
                                 : <FaMoon onClick={darkTheme}></FaMoon>
                             }
                         </Nav>
+                        {/* <Nav.Link > {user?.displayName} </Nav.Link> */}
+                        <Link to='/' >
+                            {user?.photoURL ?
+                                <OverlayTrigger
+                                    placement='bottom'
+                                    overlay={
+                                        <Tooltip>
+                                            {user?.displayName}
+                                        </Tooltip>
+                                    }
+                                >
+                                    <Image style={{ height: '30px' }} roundedCircle src={user.photoURL} ></Image>
+                                </OverlayTrigger>
+                                : <FaRegUserCircle></FaRegUserCircle>
+
+                            }
+
+                        </Link>
+
+                    </Nav>
+
+                    <Nav className='ms-4'>
 
                         {user?.uid ?
                             <Button onClick={handleSignOut} variant="warning" ><Link to='/login' className='fw-semibold text-dark text-decoration-none'>Logout</Link></Button>

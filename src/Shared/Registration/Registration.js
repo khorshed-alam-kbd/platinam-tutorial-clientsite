@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { useContext } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import swal from 'sweetalert';
 import { AuthContext } from '../../context/AuthProvider/AuthProvider';
 
@@ -11,6 +11,8 @@ const Registration = () => {
     const { createUser, updateUserProfile } = useContext(AuthContext);
 
     const [error, setError] = useState(null);
+
+    const navigate = useNavigate();
 
 
     const handleSubmit = (event) => {
@@ -31,6 +33,8 @@ const Registration = () => {
                 const user = result.user
                 console.log(user)
                 form.reset();
+                handleUpdateUserProfile(name, photoURL);
+                navigate('/')
                 setError('');
                 swal({
                     title: "Congratulations",
@@ -51,7 +55,6 @@ const Registration = () => {
                 });
             });
 
-        handleUpdateUserProfile(name, photoURL);
     }
     const handleUpdateUserProfile = (name, photoURL) => {
         const profile = {
@@ -60,7 +63,7 @@ const Registration = () => {
         }
         updateUserProfile(profile)
             .then((result) => {
-                const user = result.user
+                const user = result.user;
                 console.log(user)
             })
             .catch(error => console.error(error));
