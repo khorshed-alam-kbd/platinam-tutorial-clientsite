@@ -1,4 +1,3 @@
-import { updateProfile } from 'firebase/auth';
 import React from 'react';
 import { useState } from 'react';
 import { useContext } from 'react';
@@ -9,7 +8,7 @@ import swal from 'sweetalert';
 import { AuthContext } from '../../context/AuthProvider/AuthProvider';
 
 const Registration = () => {
-    const { createUser, auth, updateUserProfile } = useContext(AuthContext);
+    const { createUser, updateUserProfile } = useContext(AuthContext);
 
     const [error, setError] = useState(null);
 
@@ -18,7 +17,7 @@ const Registration = () => {
         event.preventDefault();
         const form = event.target;
         const name = form.name.value
-        const photoUrl = form.photoUrl.value
+        const photoURL = form.photoUrl.value
         const email = form.email.value
         const password = form.password.value
 
@@ -52,41 +51,23 @@ const Registration = () => {
                 });
             });
 
-
+        handleUpdateUserProfile(name, photoURL);
+    }
+    const handleUpdateUserProfile = (name, photoURL) => {
         const profile = {
             displayName: name,
-            photoURL: photoUrl
+            photoURL: photoURL
         }
-
-        updateProfile(auth.currentUser, profile)
-            .then(() => {
-                // Profile updated!
-                // ...
-            }).catch((error) => {
-                // An error occurred
-                // ...
-            });
-        // handleUpdateUserProfile(name, photoUrl)
+        updateUserProfile(profile)
+            .then((result) => {
+                const user = result.user
+                console.log(user)
+            })
+            .catch(error => console.error(error));
     }
-    // const handleUpdateUserProfile = (name, photoUrl) => {
-    //     const profile = {
-    //         displayName: name,
-    //         photoURL: photoUrl
-    //     }
-    //     updateUserProfile(profile)
-    //         .then((result) => {
-    //             const user = result.user
-    //             console.log(user)
-    //         })
-    //         .catch(error => console.error(error));
-
-    // }
-
-
-
 
     return (
-        <div className='container shadow mt-5 p-5 pb-2 border rounded'>
+        <div className='container shadow mt-5 p-5 pb-2 mb-5 border rounded'>
             <h2 className='fw-semibold text-dark text-center' > Registration Now!</h2>
             <Form onSubmit={handleSubmit} className='m-3'>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
