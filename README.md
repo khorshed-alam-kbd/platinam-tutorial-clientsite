@@ -19,7 +19,7 @@
 
 *************************************************************************
 
-### Technologies Use In thi Project ###
+### Technologies Use In this Project ###
 
 1. React Js
 2. HTML
