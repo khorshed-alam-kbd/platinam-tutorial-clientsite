@@ -8,9 +8,10 @@ import { Link } from 'react-router-dom';
 import { useContext } from 'react';
 import { AuthContext } from '../../context/AuthProvider/AuthProvider';
 import { Image } from 'react-bootstrap';
-import { FaBookReader, FaMoon, FaRegUserCircle, FaSun } from 'react-icons/fa';
+import { FaMoon, FaRegUserCircle, FaSun } from 'react-icons/fa';
 import { useState } from 'react';
 
+import logo from '../../Images/pt-logo.jpg'
 
 const Header = () => {
     const { user, logOut } = useContext(AuthContext);
@@ -35,11 +36,15 @@ const Header = () => {
     return (
         <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
             <Container>
-                <Navbar.Brand ><FaBookReader />  Platinam Tutorial</Navbar.Brand>
+                <Navbar.Brand >
+                    <Link to='/' className='fw-semibold text-warning text-decoration-none'>
+                        <img src={logo} alt="Logo" width="30" height="30" class="d-inline-block align-text-top rounded me-2"></img>
+                        Platinam Tutorial</Link>
+                </Navbar.Brand>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className="me-auto">
-                        <Nav.Link> <Link to='/' className='text-white text-decoration-none'>Courses</Link></Nav.Link>
+                        <Nav.Link> <Link to='/courses' className='text-white text-decoration-none'>Courses</Link></Nav.Link>
                         <Nav.Link> <Link to='/blog' className='text-white text-decoration-none'>Blog</Link></Nav.Link>
                         <NavDropdown title="Dropdown" id="collasible-nav-dropdown">
                             <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
