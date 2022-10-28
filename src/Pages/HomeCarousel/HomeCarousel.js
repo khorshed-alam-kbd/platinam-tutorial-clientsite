@@ -6,7 +6,7 @@ import img3 from '../../Images/img3.jpg';
 
 const HomeCarousel = () => {
     return (
-        <div>
+        <div className='container shadow mt-5 mb-2 p-5 border rounded'>
             <Carousel variant="dark">
                 <Carousel.Item interval={1000}>
                     <img
