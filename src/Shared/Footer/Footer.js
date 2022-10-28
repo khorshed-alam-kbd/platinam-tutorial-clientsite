@@ -1,5 +1,5 @@
 import React from 'react';
-import { FaFacebook, FaGithub, FaGoogle, FaInstagram } from 'react-icons/fa';
+import { FaFacebook, FaGithub, FaGoogle, FaInstagram, FaLinkedin, FaTwitter } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import logo from '../../Images/pt-logo.jpg'
 
@@ -17,6 +17,8 @@ const Footer = () => {
                 <FaGithub></FaGithub>
                 <FaGoogle></FaGoogle>
                 <FaInstagram></FaInstagram>
+                <FaTwitter></FaTwitter>
+                <FaLinkedin></FaLinkedin>
             </div>
         </div>
     );

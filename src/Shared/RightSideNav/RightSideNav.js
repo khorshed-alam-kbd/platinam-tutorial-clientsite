@@ -9,7 +9,7 @@ const RightSideNav = () => {
     const [courses, setCourses] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:5000/courses')
+        fetch('https://platinam-tutorial-server.vercel.app/courses')
             .then(res => res.json())
             .then(data => setCourses(data))
 
