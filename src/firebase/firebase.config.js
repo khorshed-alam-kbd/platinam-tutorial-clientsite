@@ -5,12 +5,12 @@ import { initializeApp } from "firebase/app";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-    apiKey: "AIzaSyAw6RkpbaSl4Js6e2XpmubtGe33RAfVvEQ",
-    authDomain: "platinam-tutorial.firebaseapp.com",
-    projectId: "platinam-tutorial",
-    storageBucket: "platinam-tutorial.appspot.com",
-    messagingSenderId: "51689829058",
-    appId: "1:51689829058:web:6354784d2197f330b9415b"
+    apiKey: process.env.REACT_APP_NOT_SECRET_apiKey,
+    authDomain: process.env.REACT_APP_NOT_SECRET_authDomain,
+    projectId: process.env.REACT_APP_NOT_SECRET_projectId,
+    storageBucket: process.env.REACT_APP_NOT_SECRET_storageBucket,
+    messagingSenderId: process.env.REACT_APP_NOT_SECRET_messagingSenderId,
+    appId: process.env.REACT_APP_NOT_SECRET_appId
 };
 
 // Initialize Firebase
