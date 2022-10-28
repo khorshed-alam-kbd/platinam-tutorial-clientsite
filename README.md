@@ -35,7 +35,7 @@ By enrolled here you can learn about 1. Python Programming 2. Java Programming 3
 
 *************************************************************************
 
-###Platinam ###Tutorial
+#Platinam #Tutorial
 Develop by Khorshed Alam
 
 *************************************************************************
