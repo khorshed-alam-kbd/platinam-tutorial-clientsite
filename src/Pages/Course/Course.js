@@ -28,6 +28,7 @@ const Course = () => {
                     <Card.Body>
                         <Card.Title>{course.title}</Card.Title>
                         <Card.Text> {course.description} </Card.Text>
+                        <Card.Text > <span class="fw-semibold"> Price: </span> <small>$ {course.price}</small></Card.Text>
                         <br />
                         <div className='text-center'>
                             <Button variant="outline-warning" ><Link to={`/checkout/${course.id}`} className='text-dark text-decoration-none'>Get premium access</Link></Button>

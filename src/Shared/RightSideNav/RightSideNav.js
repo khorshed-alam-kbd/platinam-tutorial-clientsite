@@ -24,7 +24,7 @@ const RightSideNav = () => {
                     <Link className='text-dark text-decoration-none' to={`/course/${course.id}`}>{course.title} </Link>
                 </p>)
             }
-            <Button variant="outline-warning" ><Link to='/courses' className='text-dark text-decoration-none'>All Courses</Link></Button>
+            <Button variant="outline-warning" ><Link to='/courses' className='text-dark fw-bold text-decoration-none'>All Courses</Link></Button>
         </div>
     );
 };

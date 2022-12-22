@@ -32,7 +32,7 @@ const CheckOut = () => {
             <div className='shadow mt-3 p-4 border rounded'>
                 <h5>Course Name: {course.title}</h5>
                 <h6>Course Price: $ {course.price}</h6>
-                <Button variant="outline-warning" className='mt-2' onClick={handleConfirm}>Confirm</Button>
+                <Button variant="outline-warning" className='mt-2' onClick={handleConfirm}>Enroll Now</Button>
 
             </div>
 

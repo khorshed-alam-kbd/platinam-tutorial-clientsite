@@ -7,22 +7,23 @@ import { Link } from 'react-router-dom';
 import { useContext } from 'react';
 import { AuthContext } from '../../context/AuthProvider/AuthProvider';
 import { Image, OverlayTrigger, Tooltip } from 'react-bootstrap';
-import { FaMoon, FaRegUserCircle, FaSun } from 'react-icons/fa';
-import { useState } from 'react';
+// import { FaMoon, FaRegUserCircle, FaSun } from 'react-icons/fa';
+// import { useState } from 'react';
 
 import logo from '../../Images/pt-logo.jpg'
 
 const Header = () => {
     const { user, logOut } = useContext(AuthContext);
 
-    const [dark, setDark] = useState(false)
+    // const [dark, setDark] = useState(false)
 
-    const darkTheme = () => {
-        setDark(true);
-    }
-    const LightTheme = () => {
-        setDark(false);
-    }
+    // const darkTheme = () => {
+
+    //     setDark(true);
+    // }
+    // const LightTheme = () => {
+    //     setDark(false);
+    // }
 
     const handleSignOut = () => {
         logOut().then(() => {
@@ -49,12 +50,12 @@ const Header = () => {
 
                     </Nav>
                     <Nav>
-                        <Nav className='text-light p-2 me-2 '>
+                        {/* <Nav className='text-light p-2 me-2 '>
                             {dark ?
                                 <FaSun onClick={LightTheme}></FaSun>
                                 : <FaMoon onClick={darkTheme}></FaMoon>
                             }
-                        </Nav>
+                        </Nav> */}
                         {/* <Nav.Link > {user?.displayName} </Nav.Link> */}
                         <Link to='/' >
                             {user?.photoURL ?
@@ -68,7 +69,8 @@ const Header = () => {
                                 >
                                     <Image style={{ height: '30px' }} roundedCircle src={user.photoURL} ></Image>
                                 </OverlayTrigger>
-                                : <FaRegUserCircle></FaRegUserCircle>
+                                : <></>
+                                // <FaRegUserCircle></FaRegUserCircle>
 
                             }
 

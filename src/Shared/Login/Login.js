@@ -3,7 +3,8 @@ import React, { useContext } from 'react';
 import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import { FaGithub, FaGoogle } from 'react-icons/fa';
+import { FaGithub } from 'react-icons/fa';
+import { FcGoogle } from "react-icons/fc";
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import swal from 'sweetalert';
 import { AuthContext } from '../../context/AuthProvider/AuthProvider';
@@ -76,8 +77,8 @@ const Login = () => {
     }
 
     return (
-        <div className='container shadow mt-5 p-5 pb-2 border rounded'>
-            <h2 className='fw-semibold text-dark text-center' >Hi, Welcome back!</h2>
+        <div className='container shadow my-5 p-5 pb-2 border rounded'>
+            <h2 className='fw-semibold text-dark text-center' >Login Now</h2>
             <Form onSubmit={handleSubmit}>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Label>Email </Form.Label>
@@ -91,16 +92,18 @@ const Login = () => {
                 <p><small>Forgot Password?</small></p>
                 <p className='text-danger'>{error}</p>
 
-                <Button variant="warning" type="submit" className='fw-semibold text-dark text-decoration-none w-100 mb-3 '> Login </Button>
+                <Button variant="warning" type="submit" className='fw-semibold text-dark text-decoration-none w-100 '> Login </Button>
 
                 <p className='text-center mt-3'>
                     Don't have an account? <Link className='fw-semibold text-warning text-decoration-none' to={'/register'}> Registration Now</Link>
                 </p>
             </Form>
             <p className='text-center'>or</p>
+            <div className='d-flex justify-content-around'>
+                <Button onClick={handleGoogleSignIn} variant="secondary" type="submit" className='fw-semibold text-decoration-none w-25 mb-3'> <FcGoogle /> Google </Button>
+                <Button onClick={handleGitHubSignIn} variant="secondary" type="submit" className='fw-semibold text-decoration-none w-25 mb-3'><FaGithub></FaGithub> GitHub </Button>
+            </div>
 
-            <Button onClick={handleGoogleSignIn} variant="success" type="submit" className='fw-semibold text-white text-decoration-none  w-50 mb-3 g-3'> <FaGoogle></FaGoogle> Google </Button>
-            <Button onClick={handleGitHubSignIn} variant="secondary" type="submit" className='fw-semibold text-white text-decoration-none w-50 mb-3'><FaGithub></FaGithub> GitHub </Button>
         </div>
     );
 };

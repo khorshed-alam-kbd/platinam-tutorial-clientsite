@@ -1,9 +1,10 @@
 import React from 'react';
 import { Button, Card } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 const CourseCard = (course) => {
-    console.log(course.title);
-    const { title, image, description, price } = course.course
+    console.log(course.course);
+    const { title, image, description, price, id } = course.course
     return (
         <div>
             <Card className='w-100 g-3 mb-5'>
@@ -11,7 +12,8 @@ const CourseCard = (course) => {
                 <Card.Body>
                     <Card.Title>{title}</Card.Title>
                     <Card.Text> {description.slice(0, 100)}...</Card.Text>
-                    <Button variant="outline-warning">$ {price}</Button>
+                    <Card.Text> <span class="fw-semibold"> Price: </span> <small>$ {price}</small></Card.Text>
+                    <Button variant="outline-warning" ><Link className='text-dark text-decoration-none' to={`/course/${id}`}>Details</Link></Button>
                 </Card.Body>
             </Card>
         </div>
