@@ -79,29 +79,33 @@ const Login = () => {
     return (
         <div className='container shadow my-5 p-5 pb-2 border rounded'>
             <h2 className='fw-semibold text-dark text-center' >Login Now</h2>
-            <Form onSubmit={handleSubmit}>
-                <Form.Group className="mb-3" controlId="formBasicEmail">
-                    <Form.Label>Email </Form.Label>
-                    <Form.Control type="email" name='email' placeholder="Email Address " required />
-                </Form.Group>
+            <div className='w-50 position-relative top-0 start-50 translate-middle-x '>
+                <Form onSubmit={handleSubmit}>
+                    <Form.Group className="mb-3" controlId="formBasicEmail">
+                        <Form.Label>Email </Form.Label>
+                        <Form.Control type="email" name='email' placeholder="Email Address " required />
+                    </Form.Group>
 
-                <Form.Group className="mb-3" controlId="formBasicPassword">
-                    <Form.Label>Password</Form.Label>
-                    <Form.Control type="password" name='password' placeholder="Password" required />
-                </Form.Group>
-                <p><small>Forgot Password?</small></p>
-                <p className='text-danger'>{error}</p>
+                    <Form.Group className="mb-3" controlId="formBasicPassword">
+                        <Form.Label>Password</Form.Label>
+                        <Form.Control type="password" name='password' placeholder="Password" required />
+                    </Form.Group>
+                    <p><small>Forgot Password?</small></p>
+                    <p className='text-danger'>{error}</p>
 
-                <Button variant="warning" type="submit" className='fw-semibold text-dark text-decoration-none w-100 '> Login </Button>
+                    <Button variant="warning" type="submit" className='fw-semibold text-dark text-decoration-none w-100 '> Login </Button>
 
-                <p className='text-center mt-3'>
-                    Don't have an account? <Link className='fw-semibold text-warning text-decoration-none' to={'/register'}> Registration Now</Link>
-                </p>
-            </Form>
-            <p className='text-center'>or</p>
-            <div className='d-flex justify-content-around'>
-                <Button onClick={handleGoogleSignIn} variant="secondary" type="submit" className='fw-semibold text-decoration-none w-25 mb-3'> <FcGoogle /> Google </Button>
-                <Button onClick={handleGitHubSignIn} variant="secondary" type="submit" className='fw-semibold text-decoration-none w-25 mb-3'><FaGithub></FaGithub> GitHub </Button>
+                    <p className='text-center mt-3'>
+                        Don't have an account? <Link className='fw-semibold text-warning text-decoration-none' to={'/register'}> Registration Now</Link>
+                    </p>
+                </Form>
+                <hr></hr>
+
+                <div className='d-flex justify-content-between mb-3'>
+                    <Button onClick={handleGoogleSignIn} variant="outline-success" type="submit" className='fw-semibold text-decoration-none mb-3'> <FcGoogle /> Google </Button>
+                    <p className='text-center'>OR</p>
+                    <Button onClick={handleGitHubSignIn} variant="outline-dark" type="submit" className='fw-semibold text-decoration-none mb-3'><FaGithub></FaGithub> GitHub </Button>
+                </div>
             </div>
 
         </div>

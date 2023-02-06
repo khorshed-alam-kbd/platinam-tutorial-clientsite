@@ -29,10 +29,10 @@ export const routes = createBrowserRouter([
                 path: '/register',
                 element: <Registration></Registration>,
             },
-            {
-                path: '/blog',
-                element: <Blog></Blog>,
-            },
+            // {
+            //     path: '/blog',
+            //     element: <Blog></Blog>,
+            // },
 
             {
                 path: '/course/:id',
